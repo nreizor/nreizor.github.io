@@ -1,21 +1,14 @@
 
 
-window.onload = function() {
+window.onload = function () {
+  console.log('hello');
 
+  const cards = document.querySelectorAll('section article');
+  console.log('Найдено карточек:', cards.length);
 
-    console.log('hello');
-// Находим все карточки товаров на странице
-const cards = document.querySelectorAll('section article');
-
-// Перебираем каждую карточку через forEach
-cards.forEach((card, index) => {
-  // Извлекаем название и дату внутри текущей карточки
-  const title = card.querySelector('h2').textContent.trim();
-  const date = card.querySelector('time').textContent.trim();
-
-  // Выводим результат по каждой карточке отдельно
-  console.log(`Карточка №${index + 1}: ${title} — ${date}`);
-});
-
-
-}
+  cards.forEach((card, index) => {
+    const title = card.querySelector('h2')?.textContent.trim() ?? '(без названия)';
+    const date  = card.querySelector('time')?.textContent.trim() ?? '(без даты)';
+    console.log(`Карточка №${index + 1}: ${title} — ${date}`);
+  });
+};
